@@ -270,7 +270,7 @@ button{font:inherit;cursor:pointer;border:none}
     <div id="homeNote"></div>
     <div class="row" style="margin-top:20px;justify-content:space-between;align-items:center">
       <button class="btn-ghost hidden" id="newBtn" onclick="newPlayer()">↺ Novo jogador</button>
-      <span class="muted" style="font-size:14px" id="cdpLbl">Ciclo CDP · Conectar → Desenvolver → Praticar</span>
+      <span class="muted" style="font-size:14px" id="cdpLbl">Ciclo CDP · Conectar → Desenvolver → Praticar · v3.2</span>
       <button class="btn" id="startBtn" disabled onclick="start()">Entrar na cidade ➜</button>
     </div>
   </div>
@@ -598,8 +598,8 @@ function stPair(){
    <p style="margin-top:6px">O cofre tem uma senha de 5 dígitos. Cada terminal guarda <b>metade das pistas</b>: alguns fatos do caso e os princípios que explicam os fatos do <b>outro</b> terminal. Sem conversar, ninguém abre.</p>
    <div class="gold-rule"><span style="font-size:24px">💬</span><div><span class="kicker">Regra de ouro da ZDP</span>
     <p style="font-size:14.5px">Encontre alguém <b>de outra guilda</b> que esteja com o <b>outro terminal</b>. Não mostrem as telas: descrevam os fatos com suas palavras e argumentem em voz alta.</p></div></div>
-   <label style="display:block;margin-top:16px;font-weight:600">Nome do seu par</label>
-   <input class="inp" id="pn" maxlength="24" placeholder="Com quem você vai abrir o cofre?" value="${esc(S.partner)}" oninput="S.partner=this.value.trim();save();$('pmsg').innerHTML=''">
+   <label style="display:block;margin-top:16px;font-weight:600">Nome do seu par <span class="muted" style="font-weight:400">(opcional)</span></label>
+   <input class="inp" id="pn" maxlength="24" placeholder="Com quem você vai abrir o cofre?" value="${esc(S.partner==='seu par'?'':S.partner)}" oninput="S.partner=this.value.trim();save();$('pmsg').innerHTML=''">
    <div id="pmsg"></div>
    <p class="kicker" style="color:var(--mut);margin-top:16px">Escolha seu terminal (cada pessoa da dupla, um diferente)</p>
    <div class="terms">
@@ -610,12 +610,7 @@ function stPair(){
    </div>
   </div>`;
 }
-function pickTerm(t){
-  const v=($('pn')?$('pn').value:'').trim();
-  if(!v){const i=$('pn');i.classList.remove('shake');void i.offsetWidth;i.classList.add('shake');i.focus();
-    $('pmsg').innerHTML='<div class="note">✍️ Antes de abrir o terminal, escreva o <b>nome do seu par</b>. O cofre só abre em dupla!</div>';
-    i.scrollIntoView({behavior:'smooth',block:'center'});return}
-  S.partner=v;S.term=t;save();setStep('duo')}
+function pickTerm(t){const v=($('pn')?$('pn').value:'').trim();S.partner=v||'seu par';S.term=t;save();setStep('duo')}
 
 /* --- P2: Terminal + cofre --- */
 let entry=[null,null,null,null,null],cur=0,hlSet=new Set(),dTimer=null,dSec=0;
