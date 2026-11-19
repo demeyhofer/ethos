@@ -229,6 +229,11 @@ button{font:inherit;cursor:pointer;border:none}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (max-width:640px){
   .stepper .st small{display:none}
+  .stepper{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .st{padding:8px;gap:6px}
+  .st .L{width:30px;height:30px;font-size:17px}
+  .st b{font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .st>div:last-child{min-width:0}
   .zgrid,.terms{grid-template-columns:1fr}
   .xpbar{width:70px}
   .case{font-size:15.5px}
@@ -393,8 +398,10 @@ const EXPL=[
 ];
 
 /* ===================== ESTADO ===================== */
-const KEY='ethos-v3';
+const DEMO=location.hash==='#demo';
+const KEY=DEMO?'ethos-demo':'ethos-v3';
 let S=load()||fresh();
+if(DEMO&&!S.demo){S=fresh();S.demo=true;S.name='Visitante';S.prof='out';S.step='pair';S.cChoice=0;S.scrolls=CONCEPTS.map(c=>c.id);save()}
 function fresh(){return{name:'',prof:'',xp:0,step:'c',cChoice:null,scrolls:[],solo:[],duo:null,partner:'',term:'',tries:0,unlocked:false,lastCheck:null,mediated:0,done:false}}
 function load(){try{return JSON.parse(localStorage.getItem(KEY))}catch(e){return null}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
@@ -581,8 +588,9 @@ function answer(k){
 
 /* --- Mapa da ZDP + escolha de terminal --- */
 function stPair(){
+  const demoHead=`<div class="card fade"><p class="kicker" style="color:var(--gold)">Modo demonstração</p><h3 class="game" style="font-size:24px;margin-top:4px">Teste rápido: só o Cofre em dupla</h3><p class="muted" style="margin-top:6px">No jogo completo, o aluno passa antes pelo Conectar, pelo Desenvolver e pela missão solo. Aqui vocês vão direto ao desafio em dupla. Formem duplas, cada pessoa escolhe um terminal diferente, e quem abrir o cofre primeiro vence!</p></div>`;
   const ok=CONCEPTS.filter((c,i)=>S.solo[i]), no=CONCEPTS.filter((c,i)=>!S.solo[i]);
-  $('stage').innerHTML=`<div class="card fade">
+  $('stage').innerHTML=(S.demo?demoHead:`<div class="card fade">
    <h3 class="game" style="font-size:26px">🧭 Seu mapa da zona de desenvolvimento</h3>
    <p class="muted">Você acertou <b style="color:var(--txt)">${ok.length} de 5</b> sozinho(a). Esse é o seu <b style="color:var(--txt)">nível de desenvolvimento real</b> nesta ilha.</p>
    <div class="zgrid">
@@ -591,7 +599,7 @@ function stPair(){
     <div class="zcol b"><h4>🌱 Consigo com ajuda</h4><ul>${no.length?no.map(c=>`<li>${c.e} ${c.n}</li>`).join(''):'<li class="muted">Nenhum. Você será mediador(a)!</li>'}</ul>
      <p style="font-size:13px;margin-top:8px" class="muted">Procure alguém que domine estes conceitos.</p></div>
    </div>
-  </div>
+  </div>`)+`
   <div class="card fade" style="margin-top:14px">
    <p class="kicker" style="color:var(--gold)">Missão em dupla · Cofre do Consentimento</p>
    <h3 class="game" style="font-size:26px;margin-top:4px">🔐 Este cofre é inútil sozinho</h3>
@@ -624,7 +632,7 @@ function stDuo(){
     <span class="tbadge ${T}">TERMINAL ${T} · ${T==='A'?'AUDITOR(A) DE CAMPO':'AUDITOR(A) DE PRONTUÁRIOS'}</span></div>
    <div class="case" style="border-left-color:var(--gold)"><span class="kicker" style="color:var(--gold)">Caso compartilhado</span><br>${DUO_CASE}</div>
    <p style="margin-top:12px;font-size:15px">Para cada fato, a dupla responde: <b>qual princípio foi VIOLADO?</b> O número do princípio é o dígito daquela posição no cofre.</p>
-   ${missed.length?`<div class="zdpmini" style="margin-top:12px">🧭 <b>Sua ZDP:</b> você errou sozinho(a) <b>${missed.map(c=>c.n).join(', ')}</b>. Quando esse fato aparecer, peça a ${esc(S.partner)} para explicar o raciocínio. Se a dupla acertar de primeira, os dois ganham o bônus de mediação.</div>`
+   ${S.demo?`<div class="zdpmini" style="margin-top:12px">⏱️ <b>Modo demonstração:</b> cronometrem quanto tempo a dupla leva para abrir o cofre.</div>`:missed.length?`<div class="zdpmini" style="margin-top:12px">🧭 <b>Sua ZDP:</b> você errou sozinho(a) <b>${missed.map(c=>c.n).join(', ')}</b>. Quando esse fato aparecer, peça a ${esc(S.partner)} para explicar o raciocínio. Se a dupla acertar de primeira, os dois ganham o bônus de mediação.</div>`
      :`<div class="zdpmini" style="margin-top:12px">🧭 <b>Sua ZDP:</b> você acertou tudo sozinho(a). Seu papel é <b>mediar</b>: explique, não dite a resposta.</div>`}
 
    <div class="sect"><span class="kicker">📁 Seu dossiê · fatos que só você tem</span>
@@ -676,7 +684,7 @@ function unlock(){
   // desempenho da dupla por conceito (ordem CONCEPTS)
   const byC={};FACTS.forEach((f,i)=>byC[f.c]=S.duo[i]);
   S.duoC=CONCEPTS.map(c=>byC[c.id]);
-  let med=0;CONCEPTS.forEach((c,i)=>{if(!S.solo[i]&&S.duoC[i])med++});
+  let med=0;if(!S.demo)CONCEPTS.forEach((c,i)=>{if(!S.solo[i]&&S.duoC[i])med++});
   S.mediated=med;save();
   addXP(Math.max(100,350-50*(S.tries-1))+med*150,med?`Cofre aberto + ${med} bônus de mediação!`:'Cofre aberto!');
   renderUnlocked();
@@ -688,7 +696,9 @@ function renderUnlocked(){
    <h3 class="game" style="font-size:20px;margin-top:16px">Por que cada dígito?</h3>
    <div class="exp">${EXPL.map((e,i)=>`<div><b>D${i+1} = ${CODE[i]}</b> · ${CONCEPTS.find(c=>c.id===FACTS[i].c).e} ${e}</div>`).join('')}</div>
    <div class="callout"><b>💡 Repare:</b> cada princípio “de fachada” (6, 2, 1, 0, 9) é o argumento que a instituição usou para se defender. Os dilemas éticos reais quase sempre se apresentam assim, com uma boa justificativa do outro lado.</div>
-   <div style="text-align:right;margin-top:16px"><button class="btn mag" onclick="setStep('end')">Ver meu resultado ➜</button></div>
+   <div style="text-align:right;margin-top:16px">${S.demo
+     ?`<button class="btn gold" onclick="endDemo()">Jogar a versão completa ➜</button>`
+     :`<button class="btn mag" onclick="setStep('end')">Ver meu resultado ➜</button>`}</div>
   </div>`;
 }
 
@@ -723,7 +733,9 @@ function stEnd(){
   requestAnimationFrame(()=>setTimeout(()=>{$('b1').style.width=s*20+'%';$('b2').style.width=d*20+'%'},80));
 }
 
-go(S.name&&S.prof?'map':'home');
+window.addEventListener('hashchange',()=>{if((location.hash==='#demo')!==DEMO)location.reload()});
+function endDemo(){try{localStorage.removeItem('ethos-demo')}catch(e){}location.href=location.pathname}
+go(DEMO?'isl':(S.name&&S.prof?'map':'home'));
 if(S.name)hud();
 </script>
 </body>
