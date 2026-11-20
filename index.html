@@ -197,6 +197,57 @@ button{font:inherit;cursor:pointer;border:none}
 .vmsg{margin-top:12px;font-size:14px;text-align:center}
 .shake{animation:shake .4s}
 @keyframes shake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* duo v2 (ilustrado) */
+.dtabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:5px;background:#16224F;border-radius:16px;margin:4px 0 16px}
+.dtabs button{height:44px;border-radius:12px;background:transparent;color:var(--mut);font-weight:800;font-size:15px}
+.dtabs button.on{background:var(--cyan);color:#071028}
+.B .dtabs button.on{background:var(--mag);color:#2a0b25}
+.scene{position:relative;border-radius:24px;overflow:hidden;background:linear-gradient(180deg,#24306E 0%,#3A1F6B 100%)}
+.scene svg{display:block;width:100%;height:auto}
+.scene .lbl{position:absolute;left:16px;top:14px;font-size:12px;font-weight:800;letter-spacing:1.5px;color:var(--gold)}
+.scene .pill{position:absolute;right:14px;bottom:14px;font-family:var(--disp);font-weight:600;font-size:16px;color:#F3F0E8;background:rgba(11,20,48,.75);border-radius:999px;padding:6px 14px}
+.bubble2{position:relative;background:#F3F0E8;color:#0B1430;border-radius:20px;padding:18px;margin-top:16px}
+.bubble2:before{content:"";position:absolute;left:22%;top:-10px;width:22px;height:22px;background:#F3F0E8;transform:rotate(45deg);border-radius:4px}
+.bubble2 .k{font-size:12px;font-weight:800;letter-spacing:1.5px;color:#0E7C74}
+.bubble2 .t{font-size:19px;line-height:1.45;font-weight:700;margin:6px 0 8px}
+.bubble2 .h{font-size:14px;color:#3B4566}
+.pager{display:flex;align-items:center;justify-content:space-between;margin-top:16px}
+.pager button{width:56px;height:56px;border-radius:18px;border:1px solid var(--line);background:#16224F;color:#F3F0E8;font-size:24px;font-weight:800}
+.pager button.nx{background:var(--cyan);color:#071028;border:none}
+.B .pager button.nx{background:var(--mag);color:#2a0b25}
+.dots{display:flex;gap:8px}.dots i{width:10px;height:10px;border-radius:99px;background:var(--line);transition:all .2s}.dots i.on{width:28px;background:var(--cyan)}
+.B .dots i.on{background:var(--mag)}
+.chip2{display:flex;gap:10px;align-items:flex-start;margin-top:16px;padding:10px 12px;border-radius:14px;font-size:14px;line-height:1.4;background:rgba(255,122,224,.1);border:1px solid rgba(255,122,224,.45);color:#FFC6F1}
+.mgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.mcard{display:flex;flex-direction:column;gap:8px;align-items:flex-start;text-align:left;padding:14px;border-radius:18px;min-height:160px;background:#16224F;border:2px solid var(--line);color:var(--txt);transition:all .15s}
+.mcard .top{display:flex;justify-content:space-between;align-items:flex-start;width:100%}
+.mcard .ic{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:#0B1430;color:var(--cyan)}
+.mcard .cd{font-family:var(--disp);font-size:34px;font-weight:700;line-height:1;color:#F3F0E8}
+.mcard b{font-family:var(--disp);font-size:18px;font-weight:600;color:#F3F0E8}
+.mcard small{font-size:14px;line-height:1.35;color:var(--mut)}
+.mcard.hl{border-color:var(--gold);background:rgba(255,209,102,.1)}.mcard.hl .ic,.mcard.hl .cd{color:var(--gold)}
+.intro{display:flex;gap:12px;align-items:center;font-size:16px;color:var(--mut)}.intro b{color:#F3F0E8}
+.warn2{font-size:14px;color:#FF9AA6;margin-top:12px}
+.safe{display:flex;flex-direction:column;align-items:center;gap:16px;padding:18px 16px;border-radius:28px;background:linear-gradient(160deg,#2A3566,#16224F);border:3px solid #3A4878;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.safe.open{border-color:var(--green)}
+.safe .top{display:flex;justify-content:space-between;align-items:center;width:100%;font-size:12px;font-weight:800;letter-spacing:2px;color:#9FB0DE}
+.safe .bolt{width:12px;height:12px;border-radius:50%;background:#5A6A9E}
+.safe .slots{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:0;width:100%}
+.safe .slot{height:88px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:#0B1430;box-shadow:inset 0 4px 10px rgba(0,0,0,.5);border:2px solid #3A4878;padding:0}
+.safe .slot .ar{font-size:12px;color:#5A6A9E;line-height:1}
+.safe .slot .v{font-family:var(--disp);font-size:30px;height:auto;line-height:1.1}
+.safe .slot.cur{border-color:var(--gold)}
+.safe .slot.ok{border-color:var(--green);color:var(--green);background:#0B1430}
+.safe .slot.no{border-color:var(--red);color:#FF9AA6;background:#0B1430}
+.safe .st{display:flex;align-items:center;gap:10px;width:100%}
+.safe .lock{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#0B1430;color:var(--gold);flex-shrink:0}
+.safe.open .lock{color:var(--green)}
+.safe .vmsg{margin:0;text-align:left;font-size:14px;font-weight:700;color:#B7C3E8}
+.pad2{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:14px}
+.pad2 button{height:54px;border-radius:12px;background:#1A2659;color:var(--txt);font-size:20px;font-weight:800;border:1px solid var(--line)}
+.pad2 button:hover{border-color:var(--gold)}
+
 .exp{display:grid;gap:8px;margin-top:12px}
 .exp div{font-size:14px;padding:10px 12px;border-radius:12px;background:#0f1a42;border:1px solid var(--line)}
 .exp b{font-family:var(--mono);color:var(--gold)}
@@ -368,24 +419,24 @@ const SOLO=[
 /* Missão em dupla: Cofre do Consentimento */
 const DUO_CASE='A Clínica-Escola Integrada mantém o programa <b>Viva Mais</b>, que une Nutrição, Odontologia e Biomedicina. Estudantes de Engenharia criaram o app do programa, que registra hábitos alimentares, exames de saliva e consultas. Uma auditoria ética encontrou <b>cinco problemas</b>. Cada terminal guarda metade das pistas.';
 const FACTS=[
-  {d:1,c:'esc',t:'A',k:'Na recepção, cada paciente recebe um termo de 6 páginas, em linguagem técnica, e assina em cerca de 2 minutos sem conversar com nenhum profissional. A coordenação diz que “está tudo escrito, assinado e arquivado, então está regularizado”.'},
-  {d:2,c:'vul',t:'B',k:'O programa inclui adolescentes de 13 a 17 anos encaminhados por obesidade. Os pais assinaram a autorização, mas os adolescentes nunca foram informados de que seus dados alimentam o app nem foram perguntados se concordavam.'},
-  {d:3,c:'rev',t:'A',k:'Um paciente pediu para sair do programa e excluir seus dados do app. A clínica respondeu que isso só será possível no fim do semestre letivo, “para não deixar buracos nos relatórios dos estudantes”.'},
-  {d:4,c:'pat',t:'B',k:'Uma paciente adulta e lúcida recusou o novo plano alimentar. Como os exames dela pioraram, a equipe passou a alterar as receitas enviadas pelo app sem avisá-la, “para o próprio bem dela”.'},
-  {d:5,c:'fin',t:'A',k:'Uma empresa de suplementos ofereceu equipamentos novos ao laboratório em troca das amostras de saliva e dos dados de consumo alimentar dos pacientes. A direção argumenta que os equipamentos vão melhorar o atendimento de todos.'}
+  {d:1,c:'esc',t:'A',s:'O termo tem 6 páginas e foi assinado em 2 minutos, sem conversa. “Está tudo assinado”, diz a coordenação.',k:'Na recepção, cada paciente recebe um termo de 6 páginas, em linguagem técnica, e assina em cerca de 2 minutos sem conversar com nenhum profissional. A coordenação diz que “está tudo escrito, assinado e arquivado, então está regularizado”.'},
+  {d:2,c:'vul',t:'B',s:'Adolescentes de 13 a 17 anos estão no programa. Os pais assinaram, mas ninguém perguntou nada a eles.',k:'O programa inclui adolescentes de 13 a 17 anos encaminhados por obesidade. Os pais assinaram a autorização, mas os adolescentes nunca foram informados de que seus dados alimentam o app nem foram perguntados se concordavam.'},
+  {d:3,c:'rev',t:'A',s:'Um paciente quis sair e apagar seus dados. Ouviu: “só no fim do semestre, por causa dos relatórios”.',k:'Um paciente pediu para sair do programa e excluir seus dados do app. A clínica respondeu que isso só será possível no fim do semestre letivo, “para não deixar buracos nos relatórios dos estudantes”.'},
+  {d:4,c:'pat',t:'B',s:'Uma paciente lúcida recusou a dieta nova. A equipe mudou as receitas no app sem avisá-la, “para o bem dela”.',k:'Uma paciente adulta e lúcida recusou o novo plano alimentar. Como os exames dela pioraram, a equipe passou a alterar as receitas enviadas pelo app sem avisá-la, “para o próprio bem dela”.'},
+  {d:5,c:'fin',t:'A',s:'Uma empresa troca equipamentos pelas amostras e dados dos pacientes. “Vai melhorar o atendimento”, diz a direção.',k:'Uma empresa de suplementos ofereceu equipamentos novos ao laboratório em troca das amostras de saliva e dos dados de consumo alimentar dos pacientes. A direção argumenta que os equipamentos vão melhorar o atendimento de todos.'}
 ];
 /* matriz que cada terminal guarda = princípios dos fatos do OUTRO terminal (+ princípios de fachada) */
 const MATRIX={
-  A:[ {n:2,t:'Representação legal',s:'Pais ou responsáveis respondem legalmente por menores de idade.'},
-      {n:7,t:'Assentimento e proteção do vulnerável',s:'Quem tem capacidade limitada também deve ser informado e ouvido.'},
-      {n:0,t:'Beneficência',s:'Agir no melhor interesse clínico do paciente.'},
-      {n:4,t:'Autonomia',s:'A pessoa capaz decide sobre si; o profissional orienta, mas não decide por ela.'} ],
-  B:[ {n:6,t:'Formalização documental',s:'O termo deve estar completo, assinado e arquivado.'},
-      {n:8,t:'Direito de revogação',s:'O consentimento pode ser retirado a qualquer momento, sem ônus nem espera.'},
-      {n:3,t:'Consentimento como processo',s:'Consentir exige diálogo, linguagem acessível e verificação da compreensão.'},
-      {n:9,t:'Sustentabilidade institucional',s:'Buscar recursos e parcerias que ampliem o atendimento.'},
-      {n:1,t:'Integridade dos dados',s:'Bases de dados não devem ter lacunas que comprometam as análises.'},
-      {n:5,t:'Finalidade e não mercantilização',s:'Dados e amostras servem apenas ao fim consentido; não são moeda de troca.'} ]
+  A:[ {n:2,t:'Representação legal',s:'Pais ou responsáveis respondem legalmente por menores de idade.',d:'Os pais respondem pelo menor.',i:'doc'},
+      {n:7,t:'Assentimento',s:'Quem tem capacidade limitada também deve ser informado e ouvido.',d:'O vulnerável também é ouvido.',i:'shield'},
+      {n:0,t:'Beneficência',s:'Agir no melhor interesse clínico do paciente.',d:'Agir pelo bem do paciente.',i:'heart'},
+      {n:4,t:'Autonomia',s:'A pessoa capaz decide sobre si; o profissional orienta, mas não decide por ela.',d:'A pessoa capaz decide sobre si.',i:'key'} ],
+  B:[ {n:6,t:'Formalização',s:'O termo deve estar completo, assinado e arquivado.',d:'Termo completo, assinado e arquivado.',i:'doc'},
+      {n:8,t:'Revogação',s:'O consentimento pode ser retirado a qualquer momento, sem ônus nem espera.',d:'Sair a qualquer momento, sem espera.',i:'undo'},
+      {n:3,t:'Consentimento',s:'Consentir exige diálogo, linguagem acessível e verificação da compreensão.',d:'Diálogo e compreensão, não só assinatura.',i:'chat'},
+      {n:9,t:'Sustentabilidade',s:'Buscar recursos e parcerias que ampliem o atendimento.',d:'Buscar recursos para a instituição.',i:'coin'},
+      {n:1,t:'Integridade dos dados',s:'Bases de dados não devem ter lacunas que comprometam as análises.',d:'Bases sem lacunas para as análises.',i:'db'},
+      {n:5,t:'Finalidade',s:'Dados e amostras servem apenas ao fim consentido; não são moeda de troca.',d:'Dados só para o fim consentido.',i:'target'} ]
 };
 const CODE=[3,7,8,4,5];
 const SLOT_LBL=['Fato 1 · A→B','Fato 2 · B→A','Fato 3 · A→B','Fato 4 · B→A','Fato 5 · A→B'];
@@ -618,57 +669,91 @@ function stPair(){
    </div>
   </div>`;
 }
-function pickTerm(t){const v=($('pn')?$('pn').value:'').trim();S.partner=v||'seu par';S.term=t;save();setStep('duo')}
+function pickTerm(t){dTab=0;fIdx=0;const v=($('pn')?$('pn').value:'').trim();S.partner=v||'seu par';S.term=t;save();setStep('duo')}
 
-/* --- P2: Terminal + cofre --- */
-let entry=[null,null,null,null,null],cur=0,hlSet=new Set(),dTimer=null,dSec=0;
+/* --- P2: Terminal + cofre (versão ilustrada) --- */
+let entry=[null,null,null,null,null],cur=0,hlSet=new Set(),dTimer=null,dSec=0,dTab=0,fIdx=0;
+const ICONS={
+ doc:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+ shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>',
+ heart:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>',
+ key:'<circle cx="8" cy="15" r="4"/><path d="M10.8 12.2L20 3M16 7l3 3M18 5l2 2"/>',
+ undo:'<path d="M9 14L4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/>',
+ chat:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/>',
+ coin:'<circle cx="12" cy="12" r="9"/><path d="M14.5 9.5a2.5 2 0 0 0-2.5-1.5c-1.5 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1 2-2.5 2a2.5 2 0 0 1-2.5-1.5M12 6.5v11"/>',
+ db:'<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
+ target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/>',
+ scale:'<path d="M12 3v18M7 21h10M5 7h14M5 7l-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z"/>'
+};
+const ico=(k,sz)=>`<svg aria-hidden="true" width="${sz||26}" height="${sz||26}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[k]}</svg>`;
+function sceneSVG(T){
+  const body=T==='A'?'#3EE6DA':'#FF7AE0', hair=T==='A'?'#2B1B3D':'#5A3215';
+  const prop=T==='A'
+   ?`<g transform="rotate(10 149 149)"><rect x="136" y="132" width="26" height="34" rx="4" fill="#F3F0E8"/><path d="M142 142H156M142 149H156M142 156H152" stroke="#9FB0DE" stroke-width="2"/><circle cx="149" cy="128" r="5" fill="#FFC94D"/></g>`
+   :`<g transform="rotate(-8 152 152)"><rect x="134" y="134" width="36" height="28" rx="4" fill="#FFC94D"/><rect x="134" y="130" width="16" height="8" rx="2" fill="#FFC94D"/><path d="M140 146H164M140 153H158" stroke="#7A5A10" stroke-width="2"/></g>`;
+  return `<svg aria-hidden="true" viewBox="0 0 358 250">
+   <circle cx="40" cy="30" r="1.6" fill="#fff" opacity=".7"/><circle cx="110" cy="18" r="1.2" fill="#fff" opacity=".5"/><circle cx="300" cy="40" r="1.8" fill="#fff" opacity=".7"/><circle cx="250" cy="14" r="1.2" fill="#fff" opacity=".5"/><circle cx="330" cy="90" r="1.2" fill="#fff" opacity=".5"/><circle cx="20" cy="110" r="1.4" fill="#fff" opacity=".6"/>
+   <ellipse cx="300" cy="130" rx="40" ry="10" fill="#59C26B" opacity=".55"/><path d="M262 130Q275 160 300 172Q325 160 338 130Z" fill="#5B4A7A" opacity=".55"/>
+   <path d="M30 200Q60 250 120 262Q180 250 210 200Z" fill="#5B4A7A"/><path d="M80 210Q110 250 120 262Q130 250 160 210Z" fill="#463863"/>
+   <ellipse cx="120" cy="200" rx="94" ry="22" fill="#59C26B"/><ellipse cx="120" cy="196" rx="82" ry="16" fill="#3E9A52"/>
+   <ellipse cx="120" cy="198" rx="94" ry="22" fill="none" stroke="${body}" stroke-width="2.5"/>
+   <rect x="100" y="120" width="40" height="66" rx="16" fill="${body}"/><rect x="108" y="150" width="24" height="36" rx="6" fill="#16224F"/>
+   <circle cx="120" cy="104" r="20" fill="#F2C7A5"/><path d="M100 100Q102 80 120 80Q140 80 140 100Q132 90 120 92Q108 90 100 100Z" fill="${hair}"/>
+   <circle cx="113" cy="106" r="2.2" fill="#0B1430"/><circle cx="127" cy="106" r="2.2" fill="#0B1430"/>
+   <path d="M114 114Q120 118 126 114" stroke="#0B1430" stroke-width="2" fill="none" stroke-linecap="round"/>${prop}</svg>`;
+}
 function stDuo(){
-  const T=S.term, O=T==='A'?'B':'A';
-  const myFacts=FACTS.filter(f=>f.t===T), theirs=FACTS.filter(f=>f.t===O);
-  const missed=CONCEPTS.filter((c,i)=>!S.solo[i]);
+  const T=S.term;
   if(S.unlocked){renderUnlocked();return}
   $('stage').innerHTML=`<div class="card fade ${T}">
-   <div class="tbar"><button class="btn-ghost" onclick="setStep('pair')">← Trocar terminal</button>
+   <div class="tbar"><button class="btn-ghost" onclick="dTab=0;fIdx=0;setStep('pair')">← Trocar terminal</button>
     <span class="tbadge ${T}">TERMINAL ${T} · ${T==='A'?'AUDITOR(A) DE CAMPO':'AUDITOR(A) DE PRONTUÁRIOS'}</span></div>
-   <div class="case" style="border-left-color:var(--gold)"><span class="kicker" style="color:var(--gold)">Caso compartilhado</span><br>${DUO_CASE}</div>
-   <p style="margin-top:12px;font-size:15px">Para cada fato, a dupla responde: <b>qual princípio foi VIOLADO?</b> O número do princípio é o dígito daquela posição no cofre.</p>
-   ${S.demo?`<div class="zdpmini" style="margin-top:12px">⏱️ <b>Modo demonstração:</b> cronometrem quanto tempo a dupla leva para abrir o cofre.</div>`:missed.length?`<div class="zdpmini" style="margin-top:12px">🧭 <b>Sua ZDP:</b> você errou sozinho(a) <b>${missed.map(c=>c.n).join(', ')}</b>. Quando esse fato aparecer, peça a ${esc(S.partner)} para explicar o raciocínio. Se a dupla acertar de primeira, os dois ganham o bônus de mediação.</div>`
-     :`<div class="zdpmini" style="margin-top:12px">🧭 <b>Sua ZDP:</b> você acertou tudo sozinho(a). Seu papel é <b>mediar</b>: explique, não dite a resposta.</div>`}
-
-   <div class="sect"><span class="kicker">📁 Seu dossiê · fatos que só você tem</span>
-   ${myFacts.map(f=>`<div class="fact"><div class="hd"><span class="dg">FATO ${f.d} · DÍGITO ${f.d}</span></div><p>${f.k}</p>
-     <p class="ask">🗣️ Descreva este fato <b>com suas palavras</b> para ${esc(S.partner)} (Terminal ${O}). Ele(a) tem a matriz com o código do princípio.</p></div>`).join('')}
-   </div>
-
-   <div class="sect"><span class="kicker">⚖️ Sua matriz · princípios para os fatos ${theirs.map(f=>f.d).join(' e ')} do Terminal ${O}</span>
-    <div class="warn">⚠️ <b>Cuidado:</b> alguns princípios aparecem no caso, mas foram <b>respeitados</b>. O dígito certo é o do princípio <b>violado</b>. Toque para destacar enquanto discutem.</div>
-    ${MATRIX[T].map(m=>`<button class="mx ${hlSet.has(m.n)?'hl':''}" onclick="toggleHl(${m.n})"><span class="code">${m.n}</span><span><b>${m.t}</b><small>${m.s}</small></span></button>`).join('')}
-    <p class="ask muted" style="font-size:13.5px">🗣️ Peça a ${esc(S.partner)} que conte os fatos ${theirs.map(f=>f.d).join(' e ')}. Depois argumentem juntos qual código se aplica.</p>
-   </div>
-
-   <div class="vault" id="vault">
-    <span class="kicker">🔐 Cofre do Consentimento · senha coletiva</span>
-    <div class="slots" id="slots"></div>
-    <div class="pad">${[1,2,3,4,5,6,7,8,9,0].map(n=>`<button onclick="press(${n})">${n}</button>`).join('')}</div>
-    <div class="row" style="margin-top:10px">
-      <button class="btn-ghost" style="flex:1;padding:11px" onclick="erase()">← Apagar</button>
-    </div>
-    <button class="btn gold full" style="margin-top:12px" onclick="tryOpen()">🔓 Destravar cofre</button>
-    <div class="vmsg" id="vmsg">${S.tries?`Tentativas: ${S.tries}`:'Cada pessoa da dupla digita a senha no próprio terminal.'}</div>
-   </div>
+   <div class="dtabs" role="tablist">${['Dossiê','Matriz','Cofre'].map((l,i)=>`<button role="tab" class="${i===dTab?'on':''}" onclick="dTab=${i};renderDuo()">${l}</button>`).join('')}</div>
+   <div id="duobody"></div>
   </div>`;
-  renderSlots();
-  clearInterval(dTimer);
+  renderDuo();
 }
-function toggleHl(n){hlSet.has(n)?hlSet.delete(n):hlSet.add(n);document.querySelectorAll('.mx').forEach(b=>b.classList.toggle('hl',hlSet.has(+b.querySelector('.code').textContent)))}
+function renderDuo(){
+  const T=S.term, O=T==='A'?'B':'A';
+  const myFacts=FACTS.filter(f=>f.t===T), theirs=FACTS.filter(f=>f.t===O);
+  document.querySelectorAll('.dtabs button').forEach((b,i)=>b.classList.toggle('on',i===dTab));
+  const missed=CONCEPTS.filter((c,i)=>!S.solo[i]);
+  const chip=S.demo?`<div class="chip2">⏱️ <span><b>Modo demonstração:</b> cronometrem quanto tempo a dupla leva.</span></div>`
+    :missed.length?`<div class="chip2">🧭 <span>Você errou <b>${missed.map(c=>c.n).join(', ')}</b> sozinho(a). Peça a ${esc(S.partner)} para explicar.</span></div>`
+    :`<div class="chip2">🧭 <span>Você acertou tudo sozinho(a): seu papel é <b>mediar</b>, não ditar.</span></div>`;
+  let h='';
+  if(dTab===0){
+    if(fIdx>=myFacts.length)fIdx=0;
+    const f=myFacts[fIdx];
+    h=`<div class="scene fade">${sceneSVG(T)}<span class="lbl">AUDITORIA · CLÍNICA VIVA MAIS</span><span class="pill">Fato ${f.d} · dígito ${f.d}</span></div>
+     <div class="bubble2"><div class="k">VOCÊ VIU NA AUDITORIA</div><div class="t">${f.s}</div><div class="h">Conte ao seu par com suas palavras. Não mostre a tela.</div></div>
+     <div class="pager"><button aria-label="Fato anterior" onclick="fIdx=(fIdx+${myFacts.length-1})%${myFacts.length};renderDuo()">‹</button>
+      <div class="dots">${myFacts.map((x,i)=>`<i class="${i===fIdx?'on':''}"></i>`).join('')}</div>
+      <button class="nx" aria-label="Próximo fato" onclick="fIdx=(fIdx+1)%${myFacts.length};renderDuo()">›</button></div>${chip}`;
+  }else if(dTab===1){
+    h=`<div class="intro fade"><span style="color:var(--gold)">${ico('scale',44)}</span><span>Ouça os <b>fatos ${theirs.map(f=>f.d).join(', ').replace(/, (\d)$/,' e $1')}</b> do seu par. Toque no princípio <b>violado</b>.</span></div>
+     <div class="mgrid">${MATRIX[T].map(m=>`<button class="mcard ${hlSet.has(m.n)?'hl':''}" onclick="toggleHl(${m.n})" aria-pressed="${hlSet.has(m.n)}"><span class="top"><span class="ic">${ico(m.i)}</span><span class="cd">${m.n}</span></span><b>${m.t}</b><small>${m.d}</small></button>`).join('')}</div>
+     <p class="warn2">Cuidado: alguns princípios aparecem no caso, mas foram respeitados.</p>`;
+  }else{
+    h=`<div class="safe fade" id="vault"><div class="top"><span class="bolt"></span>COFRE DO CONSENTIMENTO<span class="bolt"></span></div>
+       <div class="slots" id="slots"></div>
+       <div class="st"><span class="lock">${ico('key',22)}</span><p class="vmsg" id="vmsg">${S.tries?`Tentativas: ${S.tries}. Um dígito por fato, na ordem.`:'Um dígito por fato, na ordem. Os dois digitam a mesma senha.'}</p></div></div>
+     <div class="pad2">${[1,2,3,4,5,6,7,8,9,0].map(n=>`<button onclick="press(${n})">${n}</button>`).join('')}<button aria-label="Apagar" onclick="erase()">←</button><button style="grid-column:span 1;background:transparent;border-style:dashed;color:var(--mut);font-size:13px" onclick="dTab=0;renderDuo()">fatos</button></div>
+     <button class="btn gold full" style="margin-top:14px" onclick="tryOpen()">Girar a maçaneta</button>`;
+  }
+  $('duobody').innerHTML=h;
+  if(dTab===2)renderSlots();
+}
+function toggleHl(n){hlSet.has(n)?hlSet.delete(n):hlSet.add(n);renderDuo()}
 function renderSlots(){
+  if(!$('slots'))return;
   const lc=S.lastCheck;
-  $('slots').innerHTML=entry.map((v,i)=>`<div class="slot ${i===cur?'cur':''} ${lc&&lc[i]!==null&&v===lc[i].v?(lc[i].ok?'ok':'no'):''}" onclick="cur=${i};renderSlots()"><div class="v">${v===null?'–':v}</div><small>${SLOT_LBL[i]}</small></div>`).join('');
+  $('slots').innerHTML=entry.map((v,i)=>`<button class="slot ${i===cur?'cur':''} ${lc&&lc[i]!==null&&v===lc[i].v?(lc[i].ok?'ok':'no'):''}" onclick="cur=${i};renderSlots()" aria-label="Fato ${i+1}"><span class="ar">▲</span><span class="v">${v===null?'·':v}</span><span class="ar">F${i+1}</span></button>`).join('');
 }
 function press(n){entry[cur]=n;if(cur<4)cur++;renderSlots()}
 function erase(){if(entry[cur]===null&&cur>0)cur--;entry[cur]=null;renderSlots()}
 function tryOpen(){
-  if(entry.some(v=>v===null)){$('vmsg').innerHTML='Preencham os 5 dígitos antes de destravar.';return}
+  if(!$('vmsg'))return;if(entry.some(v=>v===null)){$('vmsg').innerHTML='Faltam dígitos.';return}
   S.tries++;
   const res=entry.map((v,i)=>({v,ok:v===CODE[i]}));
   if(S.tries===1)S.duo=res.map(r=>r.ok); // primeira tentativa = desempenho da dupla
@@ -677,7 +762,7 @@ function tryOpen(){
   const n=res.filter(r=>r.ok).length;
   $('vault').classList.remove('shake');void $('vault').offsetWidth;$('vault').classList.add('shake');
   renderSlots();
-  $('vmsg').innerHTML=`🔒 Acesso negado. <b>${n} de 5</b> dígitos corretos (em verde). Tentativas: ${S.tries}.<br><span class="muted">Revejam os vermelhos. Será que escolheram um princípio que foi respeitado, e não violado?</span>`;
+  $('vmsg').innerHTML=`<b>${n} de 5</b> certos (em verde). Revejam os vermelhos: será que o princípio foi respeitado, e não violado?`;
 }
 function unlock(){
   S.unlocked=true;
